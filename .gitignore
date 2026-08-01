@@ -1,0 +1,8 @@
+# Carpeta que genera "Publicar": es el resultado de compilar, no código fuente.
+# Se vuelve a generar cuando se necesite, no tiene que estar en el repositorio.
+/Publicado/
+/Entrega/
+
+# Archivos temporales de los editores
+.vs/
+.idea/
