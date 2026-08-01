@@ -69,6 +69,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     Lista = new List<DetalleVenta>();
                 }
             }

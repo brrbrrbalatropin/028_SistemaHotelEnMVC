@@ -58,6 +58,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     dt = new DataTable();
                 }
 
@@ -102,6 +103,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     dt = new DataTable();
                 }
 

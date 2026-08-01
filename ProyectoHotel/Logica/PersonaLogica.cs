@@ -58,6 +58,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     Lista = new List<TipoPersona>();
                 }
             }
@@ -92,6 +93,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     respuesta = false;
                 }
             }
@@ -130,6 +132,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     respuesta = false;
                 }
 
@@ -186,6 +189,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     oPersona = null;
                 }
             }
@@ -235,6 +239,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     Lista = new List<Persona>();
                 }
             }
@@ -261,6 +266,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     respuesta = false;
                 }
 

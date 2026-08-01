@@ -51,6 +51,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     respuesta = false;
                 }
             }
@@ -81,6 +82,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     respuesta = false;
                 }
 
@@ -118,6 +120,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     Lista = new List<Piso>();
                 }
             }
@@ -144,6 +147,7 @@ namespace ProyectoHotel.Logica
                 }
                 catch (Exception ex)
                 {
+                    Registro.Error(ex);
                     respuesta = false;
                 }
 

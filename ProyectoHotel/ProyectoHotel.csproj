@@ -154,6 +154,7 @@
     <Compile Include="Logica\PisoLogica.cs" />
     <Compile Include="Logica\ProductoLogica.cs" />
     <Compile Include="Logica\RecepcionLogica.cs" />
+    <Compile Include="Logica\Registro.cs" />
     <Compile Include="Logica\ReporteLogica.cs" />
     <Compile Include="Logica\Seguridad.cs" />
     <Compile Include="Logica\VentaLogica.cs" />
@@ -187,6 +188,7 @@
     <Content Include="css\sb-admin-2.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="App_Data\Leeme.txt" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagenes\Hotel.JPG" />

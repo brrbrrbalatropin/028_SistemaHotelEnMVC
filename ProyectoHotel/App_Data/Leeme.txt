@@ -1,0 +1,26 @@
+CARPETA DE DATOS DEL SISTEMA
+============================
+
+Aqui el sistema guarda solo, sin que nadie tenga que hacer nada, un registro
+de los errores que ocurren.
+
+Dentro se crea la carpeta "Logs" con un archivo por dia:
+
+    Logs\errores-2026-08-01.log
+
+QUE HACER SI EL SISTEMA FALLA
+-----------------------------
+1. Entrar a la carpeta Logs.
+2. Buscar el archivo con la fecha del dia en que fallo.
+3. Enviarlo por correo o WhatsApp a quien administra el sistema.
+
+Ese archivo dice la hora exacta, en que parte del sistema ocurrio el problema
+y cual fue la causa. Con eso se puede resolver sin necesidad de estar frente
+a este computador.
+
+NOTAS
+-----
+- Estos archivos se pueden borrar sin ningun problema: no contienen
+  informacion del hotel, solo mensajes de error.
+- Si el sistema funciona bien, la carpeta Logs puede estar vacia o no existir.
+  Eso es normal y es buena senal.
