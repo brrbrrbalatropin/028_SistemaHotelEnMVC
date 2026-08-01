@@ -1,0 +1,94 @@
+===========================================================================
+  COPIAS DE SEGURIDAD DEL SISTEMA DEL HOTEL
+===========================================================================
+
+POR QUE ESTO IMPORTA
+--------------------
+Toda la informacion del hotel (huespedes, recepciones, ventas, precios)
+vive UNICAMENTE dentro de este computador. No esta en internet ni en
+ninguna otra parte.
+
+Si el computador se daña, le entra un virus o se formatea, esa informacion
+se pierde para siempre... a menos que exista una copia.
+
+Estas copias se hacen SOLAS todas las noches. No hay que acordarse de nada.
+
+
+DONDE QUEDAN LAS COPIAS
+-----------------------
+En la carpeta:      C:\RespaldosHotel
+
+Adentro se ven archivos con la fecha, asi:
+
+    DB_HOTEL_2026-08-01_2200.bak      <- copia del 1 de agosto, 10 de la noche
+    DB_HOTEL_2026-08-02_2200.bak      <- copia del 2 de agosto
+    respaldos.log                     <- anota si cada copia salio bien o mal
+
+Se conservan las de los ultimos 30 dias. Las mas viejas se borran solas
+para no llenar el disco.
+
+
+LOS ARCHIVOS DE ESTA CARPETA
+----------------------------
+RespaldarAhora.bat
+    Doble clic para hacer una copia EN ESTE MOMENTO.
+    Conviene usarlo antes de hacer algo importante.
+
+ProgramarRespaldoDiario.bat
+    Se ejecuta UNA SOLA VEZ, el dia de la instalacion, con clic DERECHO ->
+    "Ejecutar como administrador". Deja programada la copia automatica
+    diaria de las 10:00 PM.
+
+RestaurarCopia.bat
+    SOLO PARA EMERGENCIAS. Devuelve la informacion a como estaba en una
+    copia anterior. Ver mas abajo.
+
+respaldo.ps1 / restaurar.ps1
+    Son las instrucciones internas que usan los archivos de arriba.
+    NO se deben abrir ni modificar.
+
+
+>>> MUY IMPORTANTE: SACAR LAS COPIAS DEL COMPUTADOR <<<
+-------------------------------------------------------
+Las copias quedan en el MISMO disco del sistema. Eso protege contra un
+error del programa, pero NO protege si el computador se daña por completo,
+lo roban o se quema el disco.
+
+Por eso, UNA VEZ POR SEMANA:
+
+    1. Conectar una memoria USB.
+    2. Abrir la carpeta C:\RespaldosHotel
+    3. Copiar el archivo .bak mas reciente a la USB.
+    4. Guardar la USB en otro lugar (no al lado del computador).
+
+Tambien sirve subirlo a Google Drive, OneDrive o WhatsApp Web, si hay
+internet. Lo importante es que exista una copia FUERA de este computador.
+
+
+COMO SABER SI LAS COPIAS SE ESTAN HACIENDO
+------------------------------------------
+Entrar de vez en cuando a C:\RespaldosHotel y confirmar que hay un archivo
+con la fecha de ayer o de hoy.
+
+Si el archivo mas nuevo tiene varios dias, algo dejo de funcionar:
+abrir el archivo respaldos.log (se abre con el Bloc de notas), ver que
+dice al final, y avisar al administrador del sistema.
+
+
+EN CASO DE EMERGENCIA: COMO RESTAURAR
+-------------------------------------
+Hacer esto SOLO si se perdio informacion o el sistema dejo de funcionar.
+
+    1. Cerrar el sistema del hotel en el navegador.
+    2. Doble clic en RestaurarCopia.bat
+    3. Aparece la lista de copias disponibles con su fecha.
+       Escribir el numero de la que se quiera y dar ENTER.
+    4. El programa pide escribir SI en mayusculas para confirmar.
+    5. Esperar sin cerrar la ventana hasta que diga LISTO.
+
+TENER PRESENTE: al restaurar, todo lo que se haya registrado DESPUES de la
+fecha de esa copia se pierde. Por eso conviene escoger siempre la copia mas
+reciente que sirva.
+
+Si el proceso muestra un error, NO seguir usando el sistema y avisar al
+administrador.

@@ -50,6 +50,13 @@
     <Content Include="Sql Server\003_INSERTAR DATOS.sql" />
     <Content Include="Sql Server\003b_DATOS_DE_EJEMPLO.sql" />
     <Content Include="Sql Server\004_MIGRACION_CLAVES_CIFRADAS.sql" />
+    <Content Include="Respaldo\Leeme.txt" />
+    <Content Include="Respaldo\respaldo.ps1" />
+    <Content Include="Respaldo\restaurar.ps1" />
+    <Content Include="Respaldo\programar.ps1" />
+    <Content Include="Respaldo\RespaldarAhora.bat" />
+    <Content Include="Respaldo\RestaurarCopia.bat" />
+    <Content Include="Respaldo\ProgramarRespaldoDiario.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
