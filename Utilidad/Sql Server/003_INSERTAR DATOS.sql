@@ -1,16 +1,50 @@
+/*
+	===========================================================================
+	DATOS INICIALES DEL SISTEMA
+	===========================================================================
+	Este script deja el sistema LISTO PARA USAR y VACIO: sin habitaciones,
+	sin productos y sin clientes inventados.
+
+	Solo crea:
+	  - Los estados de habitacion y los tipos de persona, que el sistema
+	    necesita para funcionar (NO se deben modificar nunca).
+	  - Un usuario administrador para poder entrar la primera vez.
+
+	Las habitaciones, pisos, categorias, productos y usuarios del hotel se
+	cargan DESDE EL SISTEMA, con el navegador. No hace falta volver aqui.
+
+	---------------------------------------------------------------------------
+	  USUARIO PARA ENTRAR LA PRIMERA VEZ
+
+	      Correo:     admin@hotel.com
+	      Contrasena: admin123
+
+	  >>> CAMBIAR ESTA CONTRASENA APENAS SE ENTRE POR PRIMERA VEZ <<<
+	      (menu Usuarios -> boton editar -> escribir la contrasena nueva)
+
+	  Es publica: esta escrita en este archivo y cualquiera puede leerla.
+	---------------------------------------------------------------------------
+
+	Si se quieren datos de ejemplo para practicar antes de usarlo en serio,
+	ejecutar tambien el script 003b_DATOS_DE_EJEMPLO.sql (opcional).
+	===========================================================================
+*/
 
 USE DB_HOTEL
 
 GO
 
+-- Estados en los que puede estar una habitacion.
+-- El sistema los busca por numero: NO cambiar los numeros ni borrar filas.
 insert into ESTADO_HABITACION(IdEstadoHabitacion,Descripcion) values
 (1,'DISPONIBLE'),
 (2,'OCUPADO'),
 (3,'LIMPIEZA')
 
-
 go
 
+-- Tipos de persona. Igual que arriba: el sistema los busca por numero.
+-- NO cambiar los numeros ni borrar filas.
 insert into TIPO_PERSONA(IdTipoPersona, Descripcion) values
 (1,'Administrador'),
 (2,'Empleado'),
@@ -18,71 +52,10 @@ insert into TIPO_PERSONA(IdTipoPersona, Descripcion) values
 
 go
 
-
--- Las claves se guardan cifradas (PBKDF2 + salt), NUNCA en texto plano.
--- Los valores de abajo corresponden a las claves '123' y '456' respectivamente.
-insert into PERSONA(documento,nombre,apellido,correo,clave,IdTipoPersona) values
-('4545453','Naomi','Konoe','Konoe@gmail.com','100000.uCY9bXiM44BblTNzaY26Qg==.X6YvH9DlpdWnGocie1HC3nqqOrV7VWMXwHJPG3gYrws=',1),
-('4353434','Mizuki','Hayashi','Mizuki@gmail.com','100000.jFGQKHy8cFPiq1WAF8hc+A==.SDuja5XyxXfmQ+yZNvXY+cScloEwLRhfNBFMKQBpDI0=',2)
-
-GO
-
-insert into PERSONA(TipoDocumento,documento,nombre,apellido,correo,IdTipoPersona) values
-('DNI','34345656','Bartolome','Abe','Abe@gmail.com',3),
-('DNI','56567878','Hanan','Beppu','Beppu@gmail.com',3),
-('DNI','34237878','Haru','Endo','Endo@gmail.com',3),
-('PASAPORTE','78909078','Juan Luis','Vico','Vico@gmail.com',3),
-('DNI','45456767','Victoriano','Araujo','Araujo@gmail.com',3),
-('DNI','45343434','Kameyo','Hashimoto','Hashimoto@gmail.com',3),
-('PASAPORTE','34232334','Nerea','Chavez','Chavez@gmail.com',3),
-('DNI','78676756','Maria Sonia','Lillo','Lillo@gmail.com',3),
-('DNI','78787979','Nagore','Quiros','Quiros@gmail.com',3),
-('DNI','70707878','Maria Belen','Antunez','Antunez@gmail.com',3)
-
+-- Usuario administrador inicial.
+-- La contrasena se guarda cifrada (PBKDF2 + salt), NUNCA en texto plano.
+-- El valor de abajo corresponde a la contrasena 'admin123'.
+insert into PERSONA(TipoDocumento,documento,nombre,apellido,correo,clave,IdTipoPersona) values
+('DNI','00000000','Administrador','del Hotel','admin@hotel.com','100000.XAsClZ3RKQHzKVEicavTWg==.n4sVW5NEEnB8ySgB1/BToucKqP5vb4vBagaJt57tXMQ=',1)
 
 GO
-
-insert into PRODUCTO(Nombre,Detalle,Precio,Cantidad) values
-('GALLETAS DORAS','NINGUNA','0.70',50),
-('REFRESCO POCMAS','350 ML','1.50',80),
-('CHOCOLATE DMX','50 GRM','0.80',60),
-('PAPAS DORADAS','150 GRM','2.60',20),
-('REFRESCO OXA','300 ML','2',30),
-('CIGARRILLOS DEM','10 UNID','3.50',55),
-('AGUA LIFE','250 ML','3',45),
-('GASEOSA ALMOADA','350 ML','4.50',30),
-('CEREALES PANDA','NIN','2.70',40),
-('SHAMPOO GH','200 ML','2.50',20)
-
-GO
-INSERT INTO CATEGORIA(Descripcion) VALUES
-('Matrimonial'),
-('Doble'),
-('Individual')
-GO
-
-INSERT INTO PISO(Descripcion) VALUES
-('PRIMERO'),
-('SEGUNDO'),
-('TERCERO')
-
-GO
-
-INSERT INTO HABITACION(numero,detalle,precio,IdEstadoHabitacion,IdPiso,IdCategoria) values
-('001','WIFI + BA�O + TV + CABLE','70',1,1,3),
-('002','WIFI + BA�O + TV + CABLE','80',1,1,2),
-('003','BA�O + TV + CABLE','60',1,1,3),
-('004','WIFI + BA�O + TV + CABLE','80',1,1,2),
-('005','WIFI + BA�O','50',1,1,3),
-
-('006','WIFI + BA�O + TV 4K + CABLE','80',1,2,3),
-('007','WIFI + BA�O + TV 4K + CABLE','90',1,2,2),
-('008','WIFI + BA�O + TV + CABLE','70',1,2,3),
-('009','WIFI + BA�O + TV + CABLE','80',1,2,2),
-('010','WIFI + BA�O + TV + CABLE','70',1,2,3),
-
-('011','WIFI + BA�O + TV 4K + CABLE','120',1,3,1),
-('012','WIFI + BA�O + TV 4K + CABLE','120',1,3,1),
-('013','WIFI + BA�O + TV 4K + CABLE','120',1,3,1),
-('014','WIFI + BA�O + TV + CABLE','85',1,3,2),
-('015','WIFI + BA�O + TV + CABLE','75',1,3,3)
