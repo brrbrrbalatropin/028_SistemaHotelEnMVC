@@ -76,9 +76,11 @@ namespace ProyectoHotel.Logica
                                 },
                                 FechaEntradaTexto = dr["FechaEntrada"].ToString(),
                                 FechaSalidaTexto = dr["FechaSalida"].ToString(),
-                                PrecioInicial = Convert.ToDecimal(dr["PrecioInicial"].ToString(),new CultureInfo("es-PE")),
-                                Adelanto = Convert.ToDecimal(dr["Adelanto"].ToString(), new CultureInfo("es-PE")),
-                                PrecioRestante = Convert.ToDecimal(dr["PrecioRestante"].ToString(), new CultureInfo("es-PE")),
+                                // Se leen como numero directamente. Pasarlos por texto y volver a
+                                // convertirlos hacia que "70,00" se entendiera como 7000 (x100).
+                                PrecioInicial = Convert.ToDecimal(dr["PrecioInicial"]),
+                                Adelanto = Convert.ToDecimal(dr["Adelanto"]),
+                                PrecioRestante = Convert.ToDecimal(dr["PrecioRestante"]),
                                 Observacion = dr["Observacion"].ToString(),
                                 Estado = Convert.ToBoolean(dr["Estado"])
                             });
@@ -98,6 +100,16 @@ namespace ProyectoHotel.Logica
         public bool Registrar(Recepcion objeto)
         {
             bool respuesta = true;
+
+            // Si la fecha de salida no se entiende, no se registra nada: es preferible
+            // que avise a que guarde una fecha inventada.
+            DateTime? fechaSalida = Formato.AFecha(objeto.FechaSalidaTexto);
+            if (fechaSalida == null)
+            {
+                Registro.Info("No se registro la recepcion: la fecha de salida '" + objeto.FechaSalidaTexto + "' no es valida.");
+                return false;
+            }
+
             using (SqlConnection oConexion = new SqlConnection(Conexion.CN))
             {
                 try
@@ -110,10 +122,10 @@ namespace ProyectoHotel.Logica
                     cmd.Parameters.AddWithValue("Apellido", objeto.oCliente.Apellido);
                     cmd.Parameters.AddWithValue("Correo", objeto.oCliente.Correo);
                     cmd.Parameters.AddWithValue("IdHabitacion", objeto.oHabitacion.IdHabitacion);
-                    cmd.Parameters.AddWithValue("FechaSalida", Convert.ToDateTime(objeto.FechaSalidaTexto,new CultureInfo("es-PE")));
-                    cmd.Parameters.AddWithValue("PrecioInicial", Convert.ToDecimal(objeto.PrecioIncialTexto, new CultureInfo("es-PE")));
-                    cmd.Parameters.AddWithValue("Adelanto", Convert.ToDecimal(objeto.AdelantoTexto, new CultureInfo("es-PE")));
-                    cmd.Parameters.AddWithValue("PrecioRestante", Convert.ToDecimal(objeto.PrecioRestanteTexto, new CultureInfo("es-PE")));
+                    cmd.Parameters.AddWithValue("FechaSalida", fechaSalida.Value);
+                    cmd.Parameters.AddWithValue("PrecioInicial", Formato.ADecimal(objeto.PrecioIncialTexto));
+                    cmd.Parameters.AddWithValue("Adelanto", Formato.ADecimal(objeto.AdelantoTexto));
+                    cmd.Parameters.AddWithValue("PrecioRestante", Formato.ADecimal(objeto.PrecioRestanteTexto));
                     cmd.Parameters.AddWithValue("Observacion", objeto.Observacion);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -155,8 +167,8 @@ namespace ProyectoHotel.Logica
                     query.AppendLine("where IdHabitacion = @idhabitacion");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
-                    cmd.Parameters.AddWithValue("@totapagado", Convert.ToDecimal(objeto.TotalPagadoTexto,new CultureInfo("es-PE")));
-                    cmd.Parameters.AddWithValue("@costopenalidad", Convert.ToDecimal(objeto.CostoPenalidadTexto, new CultureInfo("es-PE")));
+                    cmd.Parameters.AddWithValue("@totapagado", Formato.ADecimal(objeto.TotalPagadoTexto));
+                    cmd.Parameters.AddWithValue("@costopenalidad", Formato.ADecimal(objeto.CostoPenalidadTexto));
                     cmd.Parameters.AddWithValue("@idrecepecion", objeto.IdRecepcion);
                     cmd.Parameters.AddWithValue("@idhabitacion", objeto.oHabitacion.IdHabitacion);
                     cmd.CommandType = CommandType.Text;

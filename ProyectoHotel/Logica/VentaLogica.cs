@@ -50,7 +50,7 @@ namespace ProyectoHotel.Logica
                             {
                                 IdVenta = Convert.ToInt32(dr["IdVenta"]),
                                 oRecepcion = new Recepcion() { IdRecepcion = Convert.ToInt32(dr["IdRecepcion"]) },
-                                Total = Convert.ToDecimal(dr["Total"].ToString()),
+                                Total = Convert.ToDecimal(dr["Total"]),
                                 Estado = dr["Estado"].ToString()
                             });
                         }

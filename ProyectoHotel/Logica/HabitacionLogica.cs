@@ -42,7 +42,7 @@ namespace ProyectoHotel.Logica
                     SqlCommand cmd = new SqlCommand("sp_RegistrarHabitacion", oConexion);
                     cmd.Parameters.AddWithValue("Numero", oHabitacion.Numero);
                     cmd.Parameters.AddWithValue("Detalle", oHabitacion.Detalle);
-                    cmd.Parameters.AddWithValue("Precio", Convert.ToDecimal(oHabitacion.PrecioTexto,new CultureInfo("es-PE")));
+                    cmd.Parameters.AddWithValue("Precio", Formato.ADecimal(oHabitacion.PrecioTexto));
                     cmd.Parameters.AddWithValue("IdPiso", oHabitacion.oPiso.IdPiso);
                     cmd.Parameters.AddWithValue("IdCategoria", oHabitacion.oCategoria.IdCategoria);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
@@ -75,7 +75,7 @@ namespace ProyectoHotel.Logica
                     cmd.Parameters.AddWithValue("IdHabitacion", oHabitacion.IdHabitacion);
                     cmd.Parameters.AddWithValue("Numero", oHabitacion.Numero);
                     cmd.Parameters.AddWithValue("Detalle", oHabitacion.Detalle);
-                    cmd.Parameters.AddWithValue("Precio", Convert.ToDecimal(oHabitacion.PrecioTexto, new CultureInfo("es-PE")));
+                    cmd.Parameters.AddWithValue("Precio", Formato.ADecimal(oHabitacion.PrecioTexto));
                     cmd.Parameters.AddWithValue("IdPiso", oHabitacion.oPiso.IdPiso);
                     cmd.Parameters.AddWithValue("IdCategoria", oHabitacion.oCategoria.IdCategoria);
                     cmd.Parameters.AddWithValue("Estado", oHabitacion.Estado);
@@ -131,7 +131,7 @@ namespace ProyectoHotel.Logica
                                 IdHabitacion = Convert.ToInt32(dr["IdHabitacion"]),
                                 Numero = dr["Numero"].ToString(),
                                 Detalle = dr["Detalle"].ToString(),
-                                Precio = Convert.ToDecimal(dr["Precio"].ToString()),
+                                Precio = Convert.ToDecimal(dr["Precio"]),
                                 oPiso = new Piso() { IdPiso = Convert.ToInt32(dr["IdPiso"]), Descripcion = dr["DescripcionPiso"].ToString() },
                                 oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(dr["IdCategoria"]), Descripcion = dr["DescripcionCategoria"].ToString() },
                                 oEstadoHabitacion = new EstadoHabitacion() { IdEstadoHabitacion = Convert.ToInt32(dr["IdEstadoHabitacion"]) , Descripcion = dr["DescripcionEstadoHabitacion"].ToString() },

@@ -149,6 +149,7 @@
     <Compile Include="Logica\CategoriaLogica.cs" />
     <Compile Include="Logica\Conexion.cs" />
     <Compile Include="Logica\DetalleVentaLogica.cs" />
+    <Compile Include="Logica\Formato.cs" />
     <Compile Include="Logica\HabitacionLogica.cs" />
     <Compile Include="Logica\PersonaLogica.cs" />
     <Compile Include="Logica\PisoLogica.cs" />

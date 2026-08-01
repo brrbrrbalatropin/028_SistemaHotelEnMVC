@@ -42,7 +42,7 @@ namespace ProyectoHotel.Logica
                     SqlCommand cmd = new SqlCommand("sp_RegistrarProducto", oConexion);
                     cmd.Parameters.AddWithValue("Nombre", oProducto.Nombre);
                     cmd.Parameters.AddWithValue("Detalle", oProducto.Detalle);
-                    cmd.Parameters.AddWithValue("Precio", Convert.ToDecimal(oProducto.PrecioTexto,new CultureInfo("es-PE")));
+                    cmd.Parameters.AddWithValue("Precio", Formato.ADecimal(oProducto.PrecioTexto));
                     cmd.Parameters.AddWithValue("Cantidad", oProducto.Cantidad);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -74,7 +74,7 @@ namespace ProyectoHotel.Logica
                     cmd.Parameters.AddWithValue("IdProducto", oProducto.IdProducto);
                     cmd.Parameters.AddWithValue("Nombre", oProducto.Nombre);
                     cmd.Parameters.AddWithValue("Detalle", oProducto.Detalle);
-                    cmd.Parameters.AddWithValue("Precio", Convert.ToDecimal(oProducto.PrecioTexto, new CultureInfo("es-PE")));
+                    cmd.Parameters.AddWithValue("Precio", Formato.ADecimal(oProducto.PrecioTexto));
                     cmd.Parameters.AddWithValue("Cantidad", oProducto.Cantidad);
                     cmd.Parameters.AddWithValue("Estado", oProducto.Estado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
@@ -121,7 +121,7 @@ namespace ProyectoHotel.Logica
                                 IdProducto = Convert.ToInt32(dr["IdProducto"]),
                                 Nombre = dr["Nombre"].ToString(),
                                 Detalle = dr["Detalle"].ToString(),
-                                Precio = Convert.ToDecimal(dr["Precio"].ToString()),
+                                Precio = Convert.ToDecimal(dr["Precio"]),
                                 Cantidad = Convert.ToInt32(dr["Cantidad"].ToString()),
                                 Estado = Convert.ToBoolean(dr["Estado"])
                             });

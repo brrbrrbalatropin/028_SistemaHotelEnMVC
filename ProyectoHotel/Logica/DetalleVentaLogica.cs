@@ -58,10 +58,10 @@ namespace ProyectoHotel.Logica
                                 oProducto = new Producto() {
                                     IdProducto = Convert.ToInt32(dr["IdProducto"]),
                                     Nombre = dr["Nombre"].ToString(),
-                                    Precio = Convert.ToDecimal(dr["Precio"].ToString()),
+                                    Precio = Convert.ToDecimal(dr["Precio"]),
                                 },
                                 Cantidad = Convert.ToInt32(dr["Cantidad"].ToString()),
-                                SubTotal = Convert.ToDecimal(dr["SubTotal"].ToString())
+                                SubTotal = Convert.ToDecimal(dr["SubTotal"])
                             });
                         }
                     }
