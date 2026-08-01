@@ -104,6 +104,7 @@
                             <div class="form-group">
                                 <label for="txtdescripcion">Contraseña:</label>
                                 <input type="password" class="form-control required" id="txtclave" name="descripcion" autocomplete="off">
+                                <small class="form-text text-muted" id="txtclaveayuda"></small>
                             </div>
                         </div>
                     </div>
@@ -235,6 +236,7 @@
             $("#txtapellido").val("");
             $("#txtcorreo").val("");
             $("#txtclave").val("");
+            $("#txtclaveayuda").text("");
             $("#cbotipo").val(1);
             $("#cboEstado").val(1);
 
@@ -245,7 +247,9 @@
                 $("#txtnombre").val(json.Nombre);
                 $("#txtapellido").val(json.Apellido);
                 $("#txtcorreo").val(json.Correo);
-                $("#txtclave").val(json.Clave);
+                // La contraseña esta cifrada y no se puede recuperar: el campo queda vacio.
+                $("#txtclave").val("");
+                $("#txtclaveayuda").text("Dejar vacío para conservar la contraseña actual.");
                 $("#cbotipo").val(json.oTipoPersona.IdTipoPersona);
                 $("#cboEstado").val(json.Estado == true ? 1 : 0);
             }

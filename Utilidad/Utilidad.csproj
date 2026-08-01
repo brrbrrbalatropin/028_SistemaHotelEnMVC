@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Utilidad</RootNamespace>
     <AssemblyName>Utilidad</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,7 @@
     <Content Include="Sql Server\001_CREACION BASE DATOS Y TABLAS.sql" />
     <Content Include="Sql Server\002_CREACION PROCEDIMIENTOS.sql" />
     <Content Include="Sql Server\003_INSERTAR DATOS.sql" />
+    <Content Include="Sql Server\004_MIGRACION_CLAVES_CIFRADAS.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

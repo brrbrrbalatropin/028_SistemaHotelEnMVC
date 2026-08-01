@@ -76,7 +76,7 @@ Documento varchar(15),
 Nombre varchar(50),
 Apellido varchar(50),
 Correo varchar(50),
-Clave varchar(50),
+Clave varchar(200),
 IdTipoPersona int references TIPO_PERSONA(IdTipoPersona),
 Estado bit default 1,
 FechaCreacion datetime default getdate()

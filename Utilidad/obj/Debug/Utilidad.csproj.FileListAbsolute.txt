@@ -1,0 +1,6 @@
+C:\Users\Daniel Rayo\IdeaProjects\028_SistemaHotelEnMVC\Utilidad\bin\Debug\Utilidad.dll
+C:\Users\Daniel Rayo\IdeaProjects\028_SistemaHotelEnMVC\Utilidad\bin\Debug\Utilidad.pdb
+C:\Users\Daniel Rayo\IdeaProjects\028_SistemaHotelEnMVC\Utilidad\obj\Debug\Utilidad.csproj.AssemblyReference.cache
+C:\Users\Daniel Rayo\IdeaProjects\028_SistemaHotelEnMVC\Utilidad\obj\Debug\Utilidad.csproj.CoreCompileInputs.cache
+C:\Users\Daniel Rayo\IdeaProjects\028_SistemaHotelEnMVC\Utilidad\obj\Debug\Utilidad.dll
+C:\Users\Daniel Rayo\IdeaProjects\028_SistemaHotelEnMVC\Utilidad\obj\Debug\Utilidad.pdb

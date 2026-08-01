@@ -20,7 +20,8 @@ namespace ProyectoHotel.Controllers
         public ActionResult Index(string correo, string clave)
         {
 
-            Persona ousuario = PersonaLogica.Instancia.Listar().Where(u => u.Correo == correo && u.Clave == clave && u.oTipoPersona.IdTipoPersona != 3).FirstOrDefault();
+            // La clave se verifica contra el hash guardado; nunca se compara texto contra texto.
+            Persona ousuario = PersonaLogica.Instancia.Login(correo, clave);
 
             if (ousuario == null)
             {

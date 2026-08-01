@@ -19,9 +19,11 @@ insert into TIPO_PERSONA(IdTipoPersona, Descripcion) values
 go
 
 
+-- Las claves se guardan cifradas (PBKDF2 + salt), NUNCA en texto plano.
+-- Los valores de abajo corresponden a las claves '123' y '456' respectivamente.
 insert into PERSONA(documento,nombre,apellido,correo,clave,IdTipoPersona) values
-('4545453','Naomi','Konoe','Konoe@gmail.com','123',1),
-('4353434','Mizuki','Hayashi','Mizuki@gmail.com','456',2)
+('4545453','Naomi','Konoe','Konoe@gmail.com','100000.uCY9bXiM44BblTNzaY26Qg==.X6YvH9DlpdWnGocie1HC3nqqOrV7VWMXwHJPG3gYrws=',1),
+('4353434','Mizuki','Hayashi','Mizuki@gmail.com','100000.jFGQKHy8cFPiq1WAF8hc+A==.SDuja5XyxXfmQ+yZNvXY+cScloEwLRhfNBFMKQBpDI0=',2)
 
 GO
 
@@ -67,20 +69,20 @@ INSERT INTO PISO(Descripcion) VALUES
 GO
 
 INSERT INTO HABITACION(numero,detalle,precio,IdEstadoHabitacion,IdPiso,IdCategoria) values
-('001','WIFI + BAÑO + TV + CABLE','70',1,1,3),
-('002','WIFI + BAÑO + TV + CABLE','80',1,1,2),
-('003','BAÑO + TV + CABLE','60',1,1,3),
-('004','WIFI + BAÑO + TV + CABLE','80',1,1,2),
-('005','WIFI + BAÑO','50',1,1,3),
+('001','WIFI + BAï¿½O + TV + CABLE','70',1,1,3),
+('002','WIFI + BAï¿½O + TV + CABLE','80',1,1,2),
+('003','BAï¿½O + TV + CABLE','60',1,1,3),
+('004','WIFI + BAï¿½O + TV + CABLE','80',1,1,2),
+('005','WIFI + BAï¿½O','50',1,1,3),
 
-('006','WIFI + BAÑO + TV 4K + CABLE','80',1,2,3),
-('007','WIFI + BAÑO + TV 4K + CABLE','90',1,2,2),
-('008','WIFI + BAÑO + TV + CABLE','70',1,2,3),
-('009','WIFI + BAÑO + TV + CABLE','80',1,2,2),
-('010','WIFI + BAÑO + TV + CABLE','70',1,2,3),
+('006','WIFI + BAï¿½O + TV 4K + CABLE','80',1,2,3),
+('007','WIFI + BAï¿½O + TV 4K + CABLE','90',1,2,2),
+('008','WIFI + BAï¿½O + TV + CABLE','70',1,2,3),
+('009','WIFI + BAï¿½O + TV + CABLE','80',1,2,2),
+('010','WIFI + BAï¿½O + TV + CABLE','70',1,2,3),
 
-('011','WIFI + BAÑO + TV 4K + CABLE','120',1,3,1),
-('012','WIFI + BAÑO + TV 4K + CABLE','120',1,3,1),
-('013','WIFI + BAÑO + TV 4K + CABLE','120',1,3,1),
-('014','WIFI + BAÑO + TV + CABLE','85',1,3,2),
-('015','WIFI + BAÑO + TV + CABLE','75',1,3,3)
+('011','WIFI + BAï¿½O + TV 4K + CABLE','120',1,3,1),
+('012','WIFI + BAï¿½O + TV 4K + CABLE','120',1,3,1),
+('013','WIFI + BAï¿½O + TV 4K + CABLE','120',1,3,1),
+('014','WIFI + BAï¿½O + TV + CABLE','85',1,3,2),
+('015','WIFI + BAï¿½O + TV + CABLE','75',1,3,3)

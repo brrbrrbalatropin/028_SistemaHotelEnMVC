@@ -208,7 +208,7 @@ create PROC sp_RegistrarPersona(
 @Nombre varchar(50),
 @Apellido varchar(50),
 @Correo varchar(50),
-@Clave varchar(50),
+@Clave varchar(200),
 @IdTipoPersona int,
 @Resultado bit output
 )as
@@ -236,7 +236,7 @@ create procedure sp_ModificarPersona(
 @Nombre varchar(50),
 @Apellido varchar(50),
 @Correo varchar(50),
-@Clave varchar(50),
+@Clave varchar(200),
 @IdTipoPersona int,
 @Estado bit,
 @Resultado bit output
@@ -245,13 +245,15 @@ as
 begin
 	SET @Resultado = 1
 	IF NOT EXISTS (SELECT * FROM persona WHERE Documento =@Documento and IdPersona != @IdPersona)
-		
+
 		update PERSONA set
 		TipoDocumento = @TipoDocumento,
 		Documento = @Documento,
 		Nombre = @Nombre,
 		Apellido = @Apellido,
 		Correo = @Correo,
+		-- Si viene vacia, se conserva la clave actual; si viene con valor, se reemplaza.
+		Clave = ISNULL(NULLIF(@Clave,''), Clave),
 		IdTipoPersona = @IdTipoPersona,
 		Estado = @Estado
 		where IdPersona = @IdPersona
