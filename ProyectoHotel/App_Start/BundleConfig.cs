@@ -28,12 +28,16 @@ namespace ProyectoHotel
 
 
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/css/sb-admin-2.min.css",
-                      "~/vendor/fontawesome-free/css/all.min.css",
-                      "~/vendor/datatables/dataTables.bootstrap4.min.css",
-                      "~/Content/jquery-ui.css"
-                      ));
+            // CssRewriteUrlTransform es imprescindible: al juntar los CSS en un solo
+            // archivo servido desde /Content/css, las rutas relativas que traen adentro
+            // (por ejemplo "../webfonts/..." de los iconos) dejarian de encontrarse.
+            // Esta transformacion las convierte en rutas absolutas.
+            bundles.Add(new StyleBundle("~/Content/css")
+                      .Include("~/css/sb-admin-2.min.css", new CssRewriteUrlTransform())
+                      .Include("~/vendor/fontawesome-free/css/all.min.css", new CssRewriteUrlTransform())
+                      .Include("~/vendor/datatables/dataTables.bootstrap4.min.css", new CssRewriteUrlTransform())
+                      .Include("~/Content/jquery-ui.css", new CssRewriteUrlTransform())
+                      );
 
         }
     }
