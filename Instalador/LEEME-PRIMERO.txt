@@ -23,6 +23,44 @@
 
 
 ===========================================================================
+  PASO 0 - DESCOMPRIMIR LA CARPETA  (hagalo bien o fallara el paso 4)
+===========================================================================
+
+  Usted recibio un archivo comprimido llamado SistemaHotel.zip
+
+  0.1  ANTES DE ABRIRLO, hagale clic DERECHO y elija "Propiedades".
+
+       Abajo, si aparece una casilla que dice "Desbloquear", MARQUELA
+       y de "Aceptar".
+
+       Windows bloquea los archivos que vienen de internet. Si no se
+       desbloquea aqui, el instalador del paso 4 no va a funcionar.
+
+  0.2  Ahora si: clic derecho sobre el .zip -> "Extraer todo..."
+
+  0.3  Extraigalo en un lugar facil de encontrar, por ejemplo el
+       Escritorio.
+
+  0.4  Entre a la carpeta que se creo. Debe ver adentro:
+
+           Aplicacion          (carpeta)
+           BaseDeDatos         (carpeta)
+           Respaldo            (carpeta)
+           InstalarSistema.bat
+           LEEME-PRIMERO.txt
+
+       Si no ve eso, la descompresion quedo mal. Vuelva a intentarlo.
+
+  >>> IMPORTANTE: trabaje siempre sobre la carpeta YA EXTRAIDA.
+      No intente ejecutar nada desde adentro del .zip, no funciona.
+
+  NOTA: si en algun momento Windows muestra un aviso azul que dice
+  "Windows protegio su PC", NO es un virus: es porque el programa no
+  esta firmado comercialmente. Haga clic en "Mas informacion" y luego
+  en "Ejecutar de todas formas".
+
+
+===========================================================================
   PASO 1 - INSTALAR SQL SERVER (donde se guarda la informacion)
 ===========================================================================
 
