@@ -1,0 +1,346 @@
+===========================================================================
+
+                    SISTEMA DE GESTION DEL HOTEL
+                     GUIA DE INSTALACION
+
+===========================================================================
+
+  Esta guia explica, paso a paso, como dejar el sistema funcionando en el
+  computador del hotel.
+
+  ANTES DE EMPEZAR, TENGA EN CUENTA:
+
+    - Todo el proceso toma entre 40 minutos y 1 hora, la mayor parte
+      esperando a que las cosas se instalen solas.
+    - Hace falta internet SOLO durante la instalacion. Despues el sistema
+      funciona sin internet.
+    - Hay que hacer los pasos EN ORDEN. Si se salta uno, el siguiente falla.
+    - El sistema queda instalado en UN SOLO computador. La informacion se
+      guarda ahi, no en internet.
+
+  Si algo sale mal en cualquier punto: tome una foto de la pantalla con el
+  mensaje de error y enviela. No siga adelante.
+
+
+===========================================================================
+  PASO 1 - INSTALAR SQL SERVER (donde se guarda la informacion)
+===========================================================================
+
+  1.1  Entre a esta direccion:
+
+           https://www.microsoft.com/es-es/sql-server/sql-server-downloads
+
+  1.2  Baje hasta donde dice "Express" y haga clic en "Descargar ahora".
+
+  1.3  Abra el archivo que se descargo.
+
+  1.4  Cuando pregunte el tipo de instalacion, elija la primera opcion:
+
+           >>> BASICA  <<<
+
+  1.5  Acepte los terminos y deje TODO lo demas como viene. No cambie
+       ninguna ruta ni ningun nombre.
+
+  1.6  Espere. Puede tardar 15 o 20 minutos.
+
+  1.7  Al terminar aparece una ventana con un resumen. Ahi dice:
+
+           NOMBRE DE LA INSTANCIA: SQLEXPRESS
+
+       >>> Confirme que diga SQLEXPRESS. Si dice otra cosa, ANOTELA
+           y avisela, porque hay que ajustar un archivo mas adelante.
+
+  1.8  NO cierre esa ventana todavia: tiene un boton que sirve para el
+       siguiente paso.
+
+
+===========================================================================
+  PASO 2 - INSTALAR EL PROGRAMA PARA ADMINISTRAR LA BASE DE DATOS
+===========================================================================
+
+  2.1  En la ventana del paso anterior, haga clic en el boton
+       "Instalar SSMS".
+
+       Si ya la cerro, entre directamente a:
+
+           https://aka.ms/ssmsfullsetup
+
+  2.2  Abra el archivo descargado y de clic en "Instalar".
+
+  2.3  Espere a que termine. Puede pedir reiniciar el computador: acepte.
+
+
+===========================================================================
+  PASO 3 - CREAR LA BASE DE DATOS
+===========================================================================
+
+  3.1  Abra el menu Inicio, escriba:
+
+           SQL Server Management Studio
+
+       y abralo.
+
+  3.2  Aparece una ventana pidiendo conectarse. Llenela asi:
+
+           Nombre del servidor . . . .  .\SQLEXPRESS
+           Autenticacion . . . . . . .  Windows Authentication
+
+       IMPORTANTE: si aparece una casilla que dice
+       "Confiar en el certificado del servidor", MARQUELA.
+       (o donde dice "Cifrado", elija "Opcional")
+
+       Luego haga clic en "Conectar".
+
+  3.3  Ahora hay que ejecutar CUATRO archivos, UNO POR UNO Y EN ORDEN.
+       Estan en la carpeta "BaseDeDatos" que vino con este instalador.
+
+       Para cada archivo, repita esto:
+
+           a) Menu  Archivo -> Abrir -> Archivo...
+           b) Busque el archivo y abralo
+           c) Presione la tecla  F5
+           d) Abajo debe decir que se ejecuto correctamente
+           e) Continue con el siguiente
+
+       El orden es:
+
+           1)  001_CREACION BASE DATOS Y TABLAS.sql
+           2)  002_CREACION PROCEDIMIENTOS.sql
+           3)  003_INSERTAR DATOS.sql
+
+       >>> EL ARCHIVO 005 NO SE EJECUTA TODAVIA. Es mas adelante.
+       >>> Los archivos 003b y 004 NO se ejecutan nunca en el hotel.
+
+  3.4  Puede cerrar el programa. Lo abrira una vez mas en el paso 5.
+
+
+===========================================================================
+  PASO 4 - INSTALAR EL SISTEMA
+===========================================================================
+
+  4.1  Vuelva a la carpeta que le enviaron (donde esta este archivo).
+
+  4.2  Busque el archivo:
+
+           InstalarSistema.bat
+
+  4.3  IMPORTANTE: NO le de doble clic.
+
+       Hagale clic con el BOTON DERECHO del mouse y elija:
+
+           >>> Ejecutar como administrador <<<
+
+       Si Windows pregunta si permite hacer cambios, diga que SI.
+
+  4.4  Se abre una ventana negra. Presione una tecla cuando lo pida y
+       espere. Puede tardar varios minutos activando el servidor web.
+
+       NO CIERRE ESA VENTANA hasta que diga "INSTALACION TERMINADA".
+
+  4.5  Si dice que termino bien, aparecera en el Escritorio un acceso
+       directo llamado "Sistema del Hotel".
+
+       Si en cambio muestra un error, tome una foto y enviela.
+
+
+===========================================================================
+  PASO 5 - DAR PERMISOS A LA BASE DE DATOS  (el ultimo archivo)
+===========================================================================
+
+  Este paso es obligatorio. Sin el, el sistema abre pero sale un error
+  al intentar mostrar la informacion.
+
+  5.1  Abra otra vez SQL Server Management Studio y conectese igual que
+       en el paso 3.2.
+
+  5.2  Menu  Archivo -> Abrir -> Archivo...  y abra:
+
+           005_PERMISOS_IIS.sql
+
+  5.3  Presione  F5.
+
+  5.4  Abajo, en la pestaña "Mensajes", debe aparecer:
+
+           Permisos aplicados correctamente sobre DB_HOTEL
+
+  5.5  Cierre el programa.
+
+
+===========================================================================
+  PASO 6 - ENTRAR AL SISTEMA POR PRIMERA VEZ
+===========================================================================
+
+  6.1  En el Escritorio, doble clic en "Sistema del Hotel".
+
+       Se abre el navegador con la pantalla de ingreso.
+
+  6.2  Entre con estos datos:
+
+           Correo . . . . . .  admin@hotel.com
+           Contrasena . . . .  admin123
+
+  6.3  >>>>>>>>>>  CAMBIE LA CONTRASENA DE INMEDIATO  <<<<<<<<<<
+
+       Esa contrasena es publica: viene escrita en los archivos de
+       instalacion y cualquiera que los tenga la conoce.
+
+       Para cambiarla:
+
+           a) En el menu de la izquierda, entre a "Usuarios"
+           b) Busque admin@hotel.com y haga clic en el boton azul (lapiz)
+           c) Escriba la contrasena nueva en el campo Contrasena
+           d) Guarde
+           e) Cierre sesion y vuelva a entrar con la nueva
+
+       Anote la contrasena nueva en un lugar seguro. Si se pierde, NO
+       hay forma de recuperarla: las contrasenas se guardan cifradas.
+
+
+===========================================================================
+  PASO 7 - CARGAR LA INFORMACION DEL HOTEL
+===========================================================================
+
+  El sistema llega VACIO, a proposito: no trae habitaciones ni productos
+  inventados. Hay que cargar los del hotel.
+
+  Todo se hace desde el mismo sistema, con el navegador. No hay que
+  volver a abrir programas de base de datos.
+
+  >>> EL ORDEN IMPORTA. Una habitacion necesita que ya existan su piso
+      y su categoria, porque se eligen de una lista.
+
+      1)  Mantenimiento -> Pisos
+          Ejemplo: Primer piso, Segundo piso
+
+      2)  Mantenimiento -> Categoria
+          Ejemplo: Sencilla, Doble, Suite, Familiar
+
+      3)  Mantenimiento -> Habitaciones
+          Numero, descripcion, precio por noche, piso y categoria
+
+      4)  Tienda -> Producto
+          Lo que se le vende al huesped: gaseosas, snacks, articulos de aseo
+
+      5)  Usuarios
+          Una cuenta para cada persona que vaya a usar el sistema.
+          - Administrador: ve todo
+          - Empleado: no ve Mantenimiento ni Usuarios
+
+  Los clientes NO se cargan aqui: se crean solos al registrar una entrada.
+
+  IMPORTANTE SOBRE LOS PRECIOS: se pueden escribir como se acostumbre.
+  Tanto 70000 como 70.000 se entienden igual.
+
+  ADVERTENCIA: en la base de datos hay unas listas internas (estados de
+  habitacion y tipos de persona) que el sistema necesita para funcionar.
+  No tienen pantalla y no se deben modificar por ningun medio.
+
+
+===========================================================================
+  PASO 8 - ACTIVAR LAS COPIAS DE SEGURIDAD  (no se lo salte)
+===========================================================================
+
+  Toda la informacion del hotel queda guardada UNICAMENTE en este
+  computador. Si se daña o lo roban, se pierde todo. Este paso evita eso.
+
+  8.1  Entre a la carpeta "Respaldo" que vino con este instalador.
+
+  8.2  Haga clic DERECHO en:
+
+           ProgramarRespaldoDiario.bat
+
+       y elija "Ejecutar como administrador".
+
+  8.3  Debe decir que quedo programado. Desde ese momento, todas las
+       noches a las 10:00 PM se guarda una copia automaticamente en:
+
+           C:\RespaldosHotel
+
+  8.4  UNA VEZ POR SEMANA, haga esto (toma 2 minutos):
+
+           a) Conecte una memoria USB
+           b) Abra la carpeta C:\RespaldosHotel
+           c) Copie a la USB el archivo .bak mas reciente
+           d) Guarde la USB en otro lugar
+
+       Una copia guardada en el mismo computador no sirve si el
+       computador se daña. Esta es la parte que de verdad protege.
+
+  8.5  Lea el archivo "Leeme.txt" de la carpeta Respaldo: ahi se explica
+       como devolver la informacion en caso de emergencia.
+
+
+===========================================================================
+  USO DIARIO
+===========================================================================
+
+  Cada dia solo hay que hacer una cosa:
+
+      Doble clic en "Sistema del Hotel" en el Escritorio.
+
+  No hay que abrir nada mas. El sistema arranca solo con el computador.
+
+  Para cerrarlo, simplemente cierre el navegador. La informacion se
+  guarda sola, en el momento; no existe un boton de "guardar todo".
+
+  Si se va la luz o el computador se apaga de golpe, no se pierde nada
+  de lo que ya se habia registrado.
+
+
+===========================================================================
+  SI ALGO FALLA
+===========================================================================
+
+  PROBLEMA: al abrir el acceso directo no carga nada, o dice que no se
+            puede acceder al sitio.
+
+      El servidor no esta encendido. Reinicie el computador y vuelva a
+      intentar. Si sigue igual, avise.
+
+
+  PROBLEMA: el sistema abre pero muestra un error de conexion, o las
+            listas salen vacias cuando deberian tener datos.
+
+      Casi siempre es porque SQL Server quedo con otro nombre.
+      Solucion:
+
+          a) Abra la carpeta  C:\SistemaHotel
+          b) Clic derecho en el archivo  Web.config  -> Abrir con ->
+             Bloc de notas
+          c) Busque arriba la linea que dice  Data Source=.\SQLEXPRESS
+          d) Cambie SQLEXPRESS por el nombre que anoto en el paso 1.7
+          e) Guarde el archivo y vuelva a abrir el sistema
+
+      El propio archivo trae las instrucciones escritas adentro.
+
+
+  PROBLEMA: una pantalla queda en blanco, o dice que no se pudo guardar.
+
+      El sistema anota sola la causa. Para enviarla:
+
+          a) Abra la carpeta  C:\SistemaHotel\App_Data\Logs
+          b) Busque el archivo con la fecha de hoy
+             (ejemplo: errores-2026-08-15.log)
+          c) Envielo por correo o WhatsApp
+
+      Ese archivo dice la hora exacta y que fallo. Con el se puede
+      resolver el problema sin necesidad de estar frente al computador.
+
+
+  PROBLEMA: se perdio informacion o la base de datos quedo dañada.
+
+      Use la carpeta Respaldo -> RestaurarCopia.bat
+      Lea antes el archivo Leeme.txt de esa carpeta.
+
+
+===========================================================================
+  RESUMEN PARA TENER A MANO
+===========================================================================
+
+    Direccion del sistema . . . . .  http://localhost:8080/
+    Carpeta del sistema . . . . . .  C:\SistemaHotel
+    Copias de seguridad . . . . . .  C:\RespaldosHotel
+    Archivo de errores  . . . . . .  C:\SistemaHotel\App_Data\Logs
+    Configuracion de la conexion  .  C:\SistemaHotel\Web.config
+
+===========================================================================
